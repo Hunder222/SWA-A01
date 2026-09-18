@@ -26,4 +26,4 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: secret   # password to database
     ports:
-      - "3307:3306"         # avaible on this port (default: 3306)
+      - "3306:3306"         # avaible on this port (default: 3306)
