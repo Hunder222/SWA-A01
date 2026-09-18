@@ -1,0 +1,29 @@
+services:
+  app:
+    build: .                # build using this directory, where DOckerfile is
+    environment:
+      TARGET: http://web        
+      DB_HOST: mysql        # give app database credentials
+      DB_USER: root
+      DB_PASSWORD: secret
+      DB_NAME: jokes_db
+    depends_on:             # for this to run, it needs other 2 containers be ready
+      - web
+      - mysql
+
+  web:                      # web container serving a dad joke json 
+    image: python:3-alpine  # using python based web container
+    working_dir: /data
+    volumes:
+      - ./data:/data:ro     # Use local /data as containers own /data folder
+    command: python3 -m http.server 80  # Listen on port 80
+    ports:
+      - "8080:80" 
+
+  mysql:
+    image: mysql:8.0        
+    command: --ssl=0    
+    environment:
+      MYSQL_ROOT_PASSWORD: secret   # password to database
+    ports:
+      - "3307:3306"         # avaible on this port (default: 3306)
