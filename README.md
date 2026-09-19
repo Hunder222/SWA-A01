@@ -24,7 +24,7 @@ When the contains build, the script will before starting the loop, wait and make
 The script continuesly in makes sure that both the web and mysql container are responsive by checking for healthy HTTP codes.
 When a joke is sucessfully saved to the MySQL database, a confirmation is printed in terminal.
 
-## setup
+## Setup
 - Clone the repo to a folder using terminal command: `git clone https://github.com/Hunder222/SWA-A01.git`
 - Build and run the containers using terminal command: `docker-compose up --build`
 - Wait for the images to download, the script will start afterwards.
